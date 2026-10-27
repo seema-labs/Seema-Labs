@@ -1,0 +1,11 @@
+{
+  "name": "seema-labs-websites",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/serve.mjs seema-labs",
+    "preview:seema": "node scripts/serve.mjs seema-labs",
+    "preview:trinetra": "node scripts/serve.mjs trinetra",
+    "check": "node scripts/check.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
