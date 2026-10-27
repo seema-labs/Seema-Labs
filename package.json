@@ -1,11 +1,13 @@
 {
   "name": "seema-labs-websites",
   "private": true,
+  "type": "module",
+  "workspaces": ["apps/seema-labs"],
   "scripts": {
-    "start": "node scripts/serve.mjs seema-labs",
-    "preview:seema": "node scripts/serve.mjs seema-labs",
-    "preview:trinetra": "node scripts/serve.mjs trinetra",
-    "check": "node scripts/check.mjs"
+    "start": "npm run dev -w seema-labs",
+    "build": "npm run build -w seema-labs",
+    "check": "node --test apps/seema-labs/src/decision.test.js && npm run build",
+    "preview": "npm run preview -w seema-labs"
   },
   "engines": { "node": ">=18" }
 }
