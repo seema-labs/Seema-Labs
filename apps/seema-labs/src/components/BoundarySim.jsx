@@ -84,9 +84,24 @@ export default function BoundarySim() {
             <filter id="sim-blur">
               <feGaussianBlur stdDeviation="13" />
             </filter>
+            <radialGradient id="sim-lines-fade">
+              <stop offset="0%" stopColor="#fff" stopOpacity="1" />
+              <stop offset="65%" stopColor="#fff" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+            </radialGradient>
+            <mask id="sim-lines-mask">
+              <ellipse cx="380" cy="198" rx="380" ry="198" fill="url(#sim-lines-fade)" />
+            </mask>
           </defs>
           <ellipse cx="354" cy="196" rx="258" ry="192" fill="url(#sim-field)" />
-          <g stroke="#1b4559" strokeWidth="1" strokeDasharray="2 10" opacity="0.36" fill="none">
+          <g
+            stroke="#1b4559"
+            strokeWidth="1"
+            strokeDasharray="2 10"
+            opacity="0.24"
+            fill="none"
+            mask="url(#sim-lines-mask)"
+          >
             <path d="M0 40L760 350M10 340L740 65M110 0L640 395M630 0L130 395" />
             <circle cx="355" cy="200" r="186" />
           </g>
@@ -194,6 +209,8 @@ export default function BoundarySim() {
             <circle r="6" fill="#fff" />
           </g>
           <text
+            key={current}
+            className="sim-label-text"
             x={label.x}
             y={label.y}
             fontFamily="ui-monospace, Consolas, monospace"
@@ -215,7 +232,7 @@ export default function BoundarySim() {
         </svg>
       </div>
       <div className="sim-status">
-        <div className="sim-status-line">
+        <div className="sim-status-line" key={current}>
           <span className="sim-status-dot" style={{ background: stage.color, color: stage.color }} />
           <div>
             <div className="sim-status-title">{stage.status}</div>
