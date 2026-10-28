@@ -43,10 +43,6 @@ export default function Product({ onRequestDemo }) {
             it while the agent works, and records the result against the exact code change. It works with the
             coding agent the team already uses. The first workflow is Claude Code and GitHub.
           </p>
-          <p className="product-note">
-            Built for teams running Claude Code against GitHub repositories. Source stays local by default —
-            nothing is uploaded without explicit opt-in.
-          </p>
           <motion.ul
             className="objectives"
             initial="hidden"
@@ -64,17 +60,20 @@ export default function Product({ onRequestDemo }) {
           </motion.ul>
           <div className="workflow">
             <p className="workflow-label">HOW IT WORKS</p>
-            <p className="workflow-steps">
+            <ol className="workflow-steps">
               {workflowSteps.map((step, i) => (
-                <span key={step}>
-                  <b>{String(i + 1).padStart(2, '0')}</b> {step}
-                  {i < workflowSteps.length - 1 ? <i aria-hidden="true"> → </i> : null}
-                </span>
+                <li key={step}>
+                  <span className="workflow-step-badge">{i + 1}</span>
+                  <span className="workflow-step-label">{step}</span>
+                  {i < workflowSteps.length - 1 ? <span className="workflow-connector" aria-hidden="true" /> : null}
+                </li>
               ))}
-            </p>
+            </ol>
             <p className="workflow-note">
-              Every pull request gets a Trinetra check: <strong>PASS</strong>, <strong>REVIEW</strong>, or{' '}
-              <strong>BLOCK</strong>.
+              Every pull request gets a Trinetra check:{' '}
+              <span className="check-pill check-pass">PASS</span>
+              <span className="check-pill check-review">REVIEW</span>
+              <span className="check-pill check-block">BLOCK</span>
             </p>
           </div>
         </div>

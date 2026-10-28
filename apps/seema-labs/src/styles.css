@@ -891,14 +891,6 @@ h2 {
   margin: 0 0 24px;
   color: var(--muted);
 }
-.product-note {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--muted);
-  margin: -8px 0 24px;
-  padding-left: 14px;
-  border-left: 2px solid var(--line);
-}
 .workflow {
   margin-top: 32px;
 }
@@ -908,34 +900,92 @@ h2 {
   letter-spacing: 1.7px;
   font-weight: 600;
   color: var(--muted);
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 .workflow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.workflow-steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.workflow-step-badge {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.3px;
-  color: var(--muted);
-  line-height: 2.2;
-  margin: 0 0 14px;
-}
-.workflow-steps b {
+  font-size: 10px;
   color: var(--accent);
-  font-weight: 600;
-  margin-right: 2px;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
-.workflow-steps i {
-  color: var(--line);
-  font-style: normal;
-  margin: 0 2px;
+.workflow-steps li:hover .workflow-step-badge {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px -2px #ff5a2a80;
+  transform: scale(1.1);
+}
+.workflow-step-label {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.workflow-steps li:hover .workflow-step-label {
+  color: var(--ink);
+}
+.workflow-connector {
+  width: 22px;
+  height: 1px;
+  flex: none;
+  background: linear-gradient(90deg, var(--line), transparent);
 }
 .workflow-note {
   font-size: 12px;
   color: var(--muted);
   margin: 0;
+  line-height: 2.1;
 }
-.workflow-note strong {
-  color: var(--ink);
+.check-pill {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: -2px;
+  font-family: var(--mono);
+  font-size: 10px;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  margin: 0 3px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+.check-pass {
+  color: #70f3e3;
+  border-color: #2a5850;
+  background: #0d211d;
+}
+.check-review {
+  color: #f2bd6e;
+  border-color: #5a4a26;
+  background: #241c0c;
+}
+.check-block {
+  color: #ff9cab;
+  border-color: #5a2a33;
+  background: #241216;
 }
 .objectives {
   padding: 0;
