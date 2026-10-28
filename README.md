@@ -4,14 +4,18 @@
 
 Seema Labs is the company. Trinetra is its first product, shown on the company page.
 
+Live at [seema-labs.tech](https://seema-labs.tech).
+
 ## Layout
 
 ```
-apps/seema-labs/          the site
-  src/                    company page, including the Trinetra section
+apps/seema-labs/          the site (Vite + React)
+  src/
+    components/           page sections (Hero, Company, Principles, Product, Footer, ...)
+    decision.js           sample-decision logic used by the boundary demo
 ```
 
-`npm start` opens the company page. Products scrolls to the Trinetra section. Request a Demo emails the visitor's name, email, and contact to sanjeevkumarkhatri6@gmail.com.
+`npm start` opens the company page. Products scrolls to the Trinetra section. Request a Demo emails the visitor's name, email, and contact to sanjeevkumarkhatri6@gmail.com. Animated sections use `framer-motion`.
 
 ## Preview locally
 
@@ -30,7 +34,11 @@ Open http://127.0.0.1:4174. Stop the preview with Ctrl+C.
 npm run check
 ```
 
-That runs the sample-decision test and the production build. Upload the contents of `apps/seema-labs/dist`. The site is `index.html`.
+That runs the sample-decision test and the production build. The site is `index.html`, built to `apps/seema-labs/dist`.
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/pages.yml`, which builds the site and publishes it to GitHub Pages automatically. No manual upload needed.
 
 ## Content guidelines
 
