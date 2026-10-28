@@ -10,6 +10,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.06 } },
 };
 const viewport = { once: true, amount: 0.3 };
+const workflowSteps = ['Task', 'Propose', 'Approve', 'Enforce', 'Verify', 'Record'];
 
 export default function Product({ onRequestDemo }) {
   return (
@@ -42,6 +43,10 @@ export default function Product({ onRequestDemo }) {
             it while the agent works, and records the result against the exact code change. It works with the
             coding agent the team already uses. The first workflow is Claude Code and GitHub.
           </p>
+          <p className="product-note">
+            Built for teams running Claude Code against GitHub repositories. Source stays local by default —
+            nothing is uploaded without explicit opt-in.
+          </p>
           <motion.ul
             className="objectives"
             initial="hidden"
@@ -57,6 +62,21 @@ export default function Product({ onRequestDemo }) {
             <motion.li variants={fadeUp}>If the agent needs more, the request is narrow and has to be approved.</motion.li>
             <motion.li variants={fadeUp}>The finished change is checked, and the record is tied to that revision.</motion.li>
           </motion.ul>
+          <div className="workflow">
+            <p className="workflow-label">HOW IT WORKS</p>
+            <p className="workflow-steps">
+              {workflowSteps.map((step, i) => (
+                <span key={step}>
+                  <b>{String(i + 1).padStart(2, '0')}</b> {step}
+                  {i < workflowSteps.length - 1 ? <i aria-hidden="true"> → </i> : null}
+                </span>
+              ))}
+            </p>
+            <p className="workflow-note">
+              Every pull request gets a Trinetra check: <strong>PASS</strong>, <strong>REVIEW</strong>, or{' '}
+              <strong>BLOCK</strong>.
+            </p>
+          </div>
         </div>
       </motion.div>
     </section>
