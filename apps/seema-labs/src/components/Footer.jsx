@@ -1,7 +1,15 @@
+import { motion } from 'framer-motion';
+
 export default function Footer() {
   return (
     <footer>
-      <div className="wrap footer-grid">
+      <motion.div
+        className="wrap footer-grid"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="footer-brand">
           <a className="brand" href="#" aria-label="Seema Labs home">
             <img src="/logo.svg" alt="" width="32" height="32" />
@@ -16,7 +24,7 @@ export default function Footer() {
           <a href="#principles">Principles</a>
           <a href="#products">Trinetra</a>
         </nav>
-      </div>
+      </motion.div>
       <div className="footer-bar">
         <div className="wrap">
           <span>© 2026 Seema Labs. All rights reserved.</span>

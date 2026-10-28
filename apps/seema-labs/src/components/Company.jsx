@@ -1,8 +1,23 @@
+import { motion } from 'framer-motion';
+
+const easeOut = [0.16, 1, 0.3, 1];
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+const viewport = { once: true, amount: 0.3 };
+
 export default function Company() {
   return (
     <>
       <section className="mission-strip">
-        <div className="wrap">
+        <motion.div
+          className="wrap"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={fadeUp}
+        >
           <p>OUR FOCUS</p>
           <h2>
             The question isn’t only what AI can do.
@@ -12,10 +27,16 @@ export default function Company() {
           <span className="strip-symbol" aria-hidden="true">
             ↳
           </span>
-        </div>
+        </motion.div>
       </section>
       <section className="company section wrap" id="company">
-        <div className="company-grid">
+        <motion.div
+          className="company-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={fadeUp}
+        >
           <div>
             <p className="eyebrow">01 / COMPANY</p>
             <h2>Why Seema Labs?</h2>
@@ -37,8 +58,14 @@ export default function Company() {
               </p>
             </div>
           </div>
-        </div>
-        <div className="name-story">
+        </motion.div>
+        <motion.div
+          className="name-story"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={fadeUp}
+        >
           <div className="name-graphic">
             <span className="nepali" lang="ne">
               सीमा
@@ -55,7 +82,7 @@ export default function Company() {
               connects our Nepali roots to our belief that useful AI autonomy needs clear boundaries.
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );
