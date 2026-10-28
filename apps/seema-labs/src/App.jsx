@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Company from './components/Company.jsx';
 import DemoForm from './components/DemoForm.jsx';
 import Footer from './components/Footer.jsx';
@@ -11,6 +11,11 @@ import Product from './components/Product.jsx';
 export default function App() {
   const [demoOpen, setDemoOpen] = useState(false);
   const openDemo = () => setDemoOpen(true);
+
+  useEffect(() => {
+    if (!window.location.hash) return;
+    document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
+  }, []);
 
   return (
     <>
