@@ -856,18 +856,6 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: 95px;
-  position: relative;
-  isolation: isolate;
-}
-.product-network {
-  position: absolute;
-  inset: -60px;
-  width: calc(100% + 120px);
-  height: calc(100% + 120px);
-  z-index: -1;
-  pointer-events: none;
-  mask-image: radial-gradient(55% 60% at 24% 58%, #000 0%, transparent 78%);
-  -webkit-mask-image: radial-gradient(55% 60% at 24% 58%, #000 0%, transparent 78%);
 }
 .product-brand {
   display: flex;
@@ -998,6 +986,16 @@ h2 {
   color: #ff9cab;
   border-color: #5a2a33;
   background: #241216;
+}
+.trinetra-animation-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 60px auto 0;
+}
+@media (max-width: 768px) {
+  .trinetra-animation-container {
+    margin-top: 32px;
+  }
 }
 .objectives {
   padding: 0;
