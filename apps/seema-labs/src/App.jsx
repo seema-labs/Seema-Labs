@@ -4,6 +4,7 @@ import DemoForm from './components/DemoForm.jsx';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import NetworkBackground from './components/NetworkBackground.jsx';
 import Principles from './components/Principles.jsx';
 import Product from './components/Product.jsx';
 
@@ -16,6 +17,7 @@ export default function App() {
       <a className="skip" href="#main">
         Skip to content
       </a>
+      <NetworkBackground />
       <Header />
       <main id="main">
         <Hero onRequestDemo={openDemo} />

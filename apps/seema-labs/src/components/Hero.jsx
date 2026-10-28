@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import BoundarySim from './BoundarySim.jsx';
+import NetworkBackground from './NetworkBackground.jsx';
 
 const easeOut = [0.16, 1, 0.3, 1];
+const heroFocal = { x: 0.56, y: 0.38 };
 
 export default function Hero({ onRequestDemo }) {
   return (
@@ -12,6 +14,14 @@ export default function Hero({ onRequestDemo }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: easeOut }}
       >
+        <NetworkBackground
+          className="hero-network"
+          fullViewport={false}
+          densityDivisor={3600}
+          maxNodes={55}
+          linkDistance={110}
+          focal={heroFocal}
+        />
         <p className="eyebrow">
           <span className="dot"></span> AUTONOMY, WITH INTENTION
         </p>

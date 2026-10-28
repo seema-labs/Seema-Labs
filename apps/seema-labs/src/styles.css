@@ -23,18 +23,13 @@ body {
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
-body::before {
-  content: "";
+.network-bg {
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(#ffffff08 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(120% 60% at 50% 0%, #000 0%, transparent 80%);
-  -webkit-mask-image: radial-gradient(120% 60% at 50% 0%, #000 0%, transparent 80%);
   z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(90% 75% at 50% 30%, #000 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(90% 75% at 50% 30%, #000 0%, transparent 85%);
 }
 header,
 main,
@@ -223,6 +218,18 @@ button:disabled {
 }
 .hero-text {
   max-width: none;
+  position: relative;
+  isolation: isolate;
+}
+.hero-network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  mask-image: radial-gradient(65% 70% at 56% 38%, #000 0%, transparent 82%);
+  -webkit-mask-image: radial-gradient(65% 70% at 56% 38%, #000 0%, transparent 82%);
 }
 .hero h1 {
   font-size: clamp(40px, 3.6vw, 60px);
