@@ -1,6 +1,15 @@
 import { motion } from 'framer-motion';
+import NetworkBackground from './NetworkBackground.jsx';
 
 const easeOut = [0.16, 1, 0.3, 1];
+const productFocal = { x: 0.22, y: 0.62 };
+const productPins = [
+  { label: 'src/auth/session.py', x: 0.16, y: 0.6, variant: 'default' },
+  { label: 'src/common/time.py', x: 0.35, y: 0.36, variant: 'default' },
+  { label: 'tests/auth/test_session.py', x: 0.37, y: 0.78, variant: 'default' },
+  { label: 'src/billing/payment.py', x: 0.06, y: 0.84, variant: 'deny' },
+  { label: 'infra/prod.yaml', x: 0.3, y: 0.96, variant: 'deny' },
+];
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
@@ -22,6 +31,15 @@ export default function Product({ onRequestDemo }) {
         viewport={viewport}
         variants={fadeUp}
       >
+        <NetworkBackground
+          className="product-network"
+          fullViewport={false}
+          densityDivisor={9000}
+          maxNodes={45}
+          linkDistance={130}
+          focal={productFocal}
+          pins={productPins}
+        />
         <div>
           <p className="eyebrow">03 / PRODUCT</p>
           <div className="product-brand">

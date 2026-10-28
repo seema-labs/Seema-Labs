@@ -4,6 +4,7 @@ const NODE_COLOR = '85, 229, 214';
 const ACCENT_COLOR = '255, 90, 42';
 const LINE_RGB = '49, 81, 106';
 const CORE_COLOR = '120, 255, 240';
+const DENY_COLOR = '255, 147, 164';
 const RING_CYCLE = 150;
 
 export default function NetworkBackground({
@@ -13,6 +14,7 @@ export default function NetworkBackground({
   maxNodes = 70,
   linkDistance = 150,
   focal = null,
+  pins = [],
 }) {
   const canvasRef = useRef(null);
 
@@ -104,6 +106,41 @@ export default function NetworkBackground({
       ctx.fill();
     }
 
+    function drawPins() {
+      const fx = focal ? focal.x * width : width / 2;
+      const fy = focal ? focal.y * height : height / 2;
+      for (const pin of pins) {
+        const px = pin.x * width;
+        const py = pin.y * height;
+        const color = pin.variant === 'deny' ? DENY_COLOR : CORE_COLOR;
+
+        ctx.save();
+        ctx.setLineDash([3, 6]);
+        ctx.strokeStyle = `rgba(${color}, 0.28)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(fx, fy);
+        ctx.lineTo(px, py);
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.strokeStyle = `rgba(${color}, 0.45)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(px, py, 7, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = `rgba(${color}, 0.95)`;
+        ctx.beginPath();
+        ctx.arc(px, py, 3, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.font = '10px ui-monospace, SFMono-Regular, Consolas, monospace';
+        ctx.fillStyle = `rgba(${color}, 0.85)`;
+        ctx.textAlign = px > width * 0.62 ? 'right' : px < width * 0.38 ? 'left' : 'center';
+        ctx.fillText(pin.label, px, py - 13);
+      }
+    }
+
     function render(moving) {
       if (moving) {
         for (const n of nodes) {
@@ -136,6 +173,7 @@ export default function NetworkBackground({
         ctx.fill();
       }
       if (focal) drawFocal();
+      if (pins.length) drawPins();
     }
 
     function loop() {
